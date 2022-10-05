@@ -5,8 +5,15 @@
  */
 package com.mycompany.machacas.Vista;
 
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.icepdf.ri.common.ComponentKeyBinding;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
 
 /**
  *
@@ -25,8 +32,10 @@ public class Vista extends javax.swing.JFrame {
         btnConvertir.setEnabled(false);
         Border bordepanel = new TitledBorder("Plantilla PDF");
         Border bordepane2 = new TitledBorder(" Visor PDF");
-        jPanel1.setBorder(bordepanel);
-        jPanel2.setBorder(bordepane2);
+        Border borderText = new TitledBorder(" ");
+        //scrolPanel.setBorder(bordepanel);
+        jCentro.setBorder(bordepane2);
+        jSur.setBorder(borderText);
     }
 
     /**
@@ -38,22 +47,22 @@ public class Vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jNorte = new javax.swing.JPanel();
         cbFacturas = new javax.swing.JComboBox<>();
-        btnAgregar = new javax.swing.JButton();
         btnConvertir = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jCentro = new javax.swing.JPanel();
+        jSur = new javax.swing.JPanel();
+        jtfRutaXML = new javax.swing.JTextField();
+        btnAgregarXML = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cbFacturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jNorte.setLayout(new java.awt.GridLayout());
+        getContentPane().add(jNorte, java.awt.BorderLayout.CENTER);
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
+        cbFacturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        getContentPane().add(cbFacturas, java.awt.BorderLayout.CENTER);
 
         btnConvertir.setText("Convertir");
         btnConvertir.addActionListener(new java.awt.event.ActionListener() {
@@ -61,93 +70,96 @@ public class Vista extends javax.swing.JFrame {
                 btnConvertirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnConvertir, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
-        );
+        jCentro.setLayout(new java.awt.GridLayout(1, 2));
+        getContentPane().add(jCentro, java.awt.BorderLayout.LINE_END);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jtfRutaXML.setText("Borrar antes de agregar");
+        jtfRutaXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfRutaXMLActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 64, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        btnAgregarXML.setText("Agregar XML");
+        btnAgregarXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarXMLActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jSurLayout = new javax.swing.GroupLayout(jSur);
+        jSur.setLayout(jSurLayout);
+        jSurLayout.setHorizontalGroup(
+            jSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jSurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtfRutaXML, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE))
+            .addGroup(jSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jSurLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnAgregarXML, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jSurLayout.setVerticalGroup(
+            jSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jSurLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConvertir)
-                .addGap(30, 30, 30))
+                .addComponent(jtfRutaXML, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
+            .addGroup(jSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jSurLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnAgregarXML, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(75, 75, 75)
-                .addComponent(btnConvertir)
-                .addGap(6, 6, 6))
-        );
+
+        getContentPane().add(jSur, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        btnConvertir.setEnabled(true);
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
         // TODO add your handling code here:
-        String facturaSelec = (String)cbFacturas.getSelectedItem();
-        switch (facturaSelec){
+        String facturaSelec = (String) cbFacturas.getSelectedItem();
+        switch (facturaSelec) {
             case "Manzanillo":
-                Ventana_Manzanillo vm = new Ventana_Manzanillo(this,true);
+                Ventana_Manzanillo vm = new Ventana_Manzanillo(this, true);
                 vm.setVisible(true);
+               // openpdf("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf");
                 break;
             case "SSA":
                 Ventana_SSA sa = new Ventana_SSA(this, true);
                 sa.setVisible(true);
                 break;
             case "HTP":
-                Ventana_HTP vh = new Ventana_HTP(this,true);
+                Ventana_HTP vh = new Ventana_HTP(this, true);
                 vh.setVisible(true);
                 break;
             default:
-                System.exit(0);
+                //System.exit(0);
+                JOptionPane.showMessageDialog(null, "No has seleccionado una factura", "Selecciona alguna factura", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnConvertirActionPerformed
+
+    private void jtfRutaXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfRutaXMLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfRutaXMLActionPerformed
+
+    private void btnAgregarXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarXMLActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setMultiSelectionEnabled(true);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Selecciona:", "xml");
+        fileChooser.setFileFilter(filter);
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            this.jtfRutaXML.setText(fileChooser.getSelectedFile().getAbsolutePath());
+            btnConvertir.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAgregarXMLActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,12 +195,18 @@ public class Vista extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnConvertir;
+    private javax.swing.JButton btnAgregarXML;
+    public javax.swing.JButton btnConvertir;
     private javax.swing.JComboBox<String> cbFacturas;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jCentro;
+    private javax.swing.JPanel jNorte;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jSur;
+    private javax.swing.JTextField jtfRutaXML;
     // End of variables declaration//GEN-END:variables
+
+    
+
 }

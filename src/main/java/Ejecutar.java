@@ -1,4 +1,6 @@
 
+import com.mycompany.machacas.Vista.Ejele;
+import com.mycompany.machacas.Vista.VisorPDF;
 import com.mycompany.machacas.Vista.Vista;
 
 /*
@@ -6,14 +8,20 @@ import com.mycompany.machacas.Vista.Vista;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author josue
  */
 public class Ejecutar {
+
     public static void main(String[] args) {
-        Vista v = new Vista();
-        v.setVisible(true);
+//        Vista v = new Vista();
+//        v.setVisible(true);
+
+//        Ejele e = new Ejele();
+//        e.setVisible(true);
+        VisorPDF vd = new VisorPDF();
+        vd.setExtendedState(vd.MAXIMIZED_BOTH);
+        vd.setVisible(true);
     }
 }
