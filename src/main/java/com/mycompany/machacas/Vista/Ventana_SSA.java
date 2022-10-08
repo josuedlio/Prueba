@@ -29,18 +29,48 @@ public class Ventana_SSA extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pPrincipal = new javax.swing.JPanel();
+        pNorte = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pSur = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        pCentral = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        pPrincipal.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Pictures\\ssa.PNG")); // NOI18N
+        pNorte.add(jLabel1);
+
+        pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);
+
+        jButton1.setText("Escribir");
+        pSur.add(jButton1);
+
+        pPrincipal.add(pSur, java.awt.BorderLayout.PAGE_END);
+
+        pCentral.setLayout(new java.awt.GridLayout(3, 3));
+
+        jTextField1.setText("Buque");
+        pCentral.add(jTextField1);
+
+        jTextField2.setText("Solicitud de servicio");
+        pCentral.add(jTextField2);
+
+        jTextField3.setText("Notas");
+        pCentral.add(jTextField3);
+
+        jTextField6.setText("Valor de la factura con letra");
+        pCentral.add(jTextField6);
+
+        pPrincipal.add(pCentral, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(pPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -51,5 +81,15 @@ public class Ventana_SSA extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JPanel pCentral;
+    private javax.swing.JPanel pNorte;
+    private javax.swing.JPanel pPrincipal;
+    private javax.swing.JPanel pSur;
     // End of variables declaration//GEN-END:variables
 }
