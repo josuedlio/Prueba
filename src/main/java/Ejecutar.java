@@ -1,6 +1,7 @@
 
-import Controlador.ReadXML;
+import com.mycompany.machacas.Vista.Ejele;
 import com.mycompany.machacas.Vista.VisorPDF;
+import com.mycompany.machacas.Vista.Vista;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,11 +18,10 @@ public class Ejecutar {
 //        Vista v = new Vista();
 //        v.setVisible(true);
 
+//        Ejele e = new Ejele();
+//        e.setVisible(true);
         VisorPDF vd = new VisorPDF();
         vd.setExtendedState(vd.MAXIMIZED_BOTH);
         vd.setVisible(true);
-
-        
-//        System.out.println(ReadXML.getRFC("C:\\Users\\josue.ochoa\\Downloads\\2748280.xml").equals("SMH030404NT7"));
     }
 }

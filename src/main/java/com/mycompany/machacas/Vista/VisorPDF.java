@@ -4,20 +4,11 @@
  */
 package com.mycompany.machacas.Vista;
 
-import Controlador.ControladorVista;
-import Controlador.ReadXML;
-import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import org.icepdf.ri.common.ComponentKeyBinding;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
@@ -28,22 +19,20 @@ import org.icepdf.ri.common.SwingViewBuilder;
  */
 public class VisorPDF extends javax.swing.JFrame {
 
-    ControladorVista cv = new ControladorVista();
-    String rutaPDF, rutaXML;
-
+    /**
+     * Creates new form VisorPDF
+     */
     public VisorPDF() {
         initComponents();
+
         this.cbFacturas.addItem("SSA");
         this.cbFacturas.addItem("Manzanillo");
         this.cbFacturas.addItem("HTP");
         btnConvertir.setEnabled(false);
-        tfRutaXML.setEnabled(false);
-        tfRutaXML.setColumns(30);
-        Border borderP = new TitledBorder("Original PDF");
-        Border borderV = new TitledBorder("Plantilla PDF");
+        Border borderP = new TitledBorder("Plantilla PDF");
+        Border borderV = new TitledBorder("Visor PDF");
         jScrollPane1.setBorder(borderP);
         jScrollPane2.setBorder(borderV);
-
     }
 
     /**
@@ -73,26 +62,13 @@ public class VisorPDF extends javax.swing.JFrame {
         panelMain.setLayout(new java.awt.BorderLayout());
 
         tfRutaXML.setText("Ruta XML ");
-        tfRutaXML.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        tfRutaXML.setDragEnabled(true);
-        tfRutaXML.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfRutaXMLActionPerformed(evt);
-            }
-        });
         panelSur.add(tfRutaXML);
 
         btnConvertir.setText("Convertir");
-        btnConvertir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConvertirActionPerformed(evt);
-            }
-        });
         panelSur.add(btnConvertir);
 
         panelMain.add(panelSur, java.awt.BorderLayout.PAGE_END);
 
-        cbFacturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         cbFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFacturasActionPerformed(evt);
@@ -131,54 +107,6 @@ public class VisorPDF extends javax.swing.JFrame {
 
     private void btnAgregarXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarXMLActionPerformed
         // TODO add your handling code here:
-          JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Selecciona un archivo xml", "xml");
-        chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            this.tfRutaXML.setText(chooser.getSelectedFile().getAbsolutePath());
-//            rutaXML = chooser.getSelectedFile().getAbsolutePath().contains(".pdf");
-            if (ReadXML.getRFC(this.tfRutaXML.getText()).equals("SMH030404NT7")) {
-                //SSA
-                openpdf(rutaXML);
-                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
-            } else if (ReadXML.getRFC(this.tfRutaXML.getText()).equals("CMA100106AH8")) {
-                    cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf",this);
-                //Manzanillo
-                System.out.println("CMA100106AH8");
-            } else if (ReadXML.getRFC(this.tfRutaXML.getText()).equals("TIM980730NK3")) {
-                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHPT.pdf",this);
-                //HTP
-                System.out.println("TIM980730NK3");
-            }
-            btnConvertir.setEnabled(true);
-        }
-    }//GEN-LAST:event_btnAgregarXMLActionPerformed
-
-    private void cbFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFacturasActionPerformed
-//        String facturaSelec = (String) cbFacturas.getSelectedItem();
-//        switch (facturaSelec) {
-//            case "Manzanillo":
-//                openpdf("C:\\Users\\josue.ochoa\\Downloads\\2748280_original.pdf");
-//                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf",this);
-//                break;
-//            case "SSA":
-//                openpdf("C:\\Users\\josue.ochoa\\Downloads\\6265413_original.pdf");
-//                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf",this);
-//                break;
-//            case "HTP":
-//                openpdf("C:\\Users\\josue.ochoa\\Downloads\\903744_original.pdf");
-//                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHTP.pdf",this);
-//                break;
-//            default:
-//                System.exit(0);
-//                JOptionPane.showMessageDialog(null, "No has seleccionado una factura",
-//                        "Selecciona alguna factura", JOptionPane.WARNING_MESSAGE);
-//        }
-    }//GEN-LAST:event_cbFacturasActionPerformed
-
-    private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
-        // TODO add your handling code here:
         String facturaSelec = (String) cbFacturas.getSelectedItem();
         switch (facturaSelec) {
             case "Manzanillo":
@@ -195,17 +123,30 @@ public class VisorPDF extends javax.swing.JFrame {
                 break;
             default:
                 //System.exit(0);
-                this.tfRutaXML.setText(" ");
-                this.btnConvertir.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "No has seleccionado una factura",
                         "Selecciona alguna factura", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnConvertirActionPerformed
 
-    private void tfRutaXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRutaXMLActionPerformed
-        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarXMLActionPerformed
 
-    }//GEN-LAST:event_tfRutaXMLActionPerformed
+    private void cbFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFacturasActionPerformed
+        String facturaSelec = (String) cbFacturas.getSelectedItem();
+        switch (facturaSelec) {
+            case "Manzanillo":
+                openpdf("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf");
+                break;
+            case "SSA":
+                System.out.println("Ejele");
+                break;
+            case "HTP":
+                System.out.println("Ejele2");
+                break;
+            default:
+                //System.exit(0);
+                JOptionPane.showMessageDialog(null, "No has seleccionado una factura",
+                        "Selecciona alguna factura", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_cbFacturasActionPerformed
 
     void openpdf(String file) {
         try {
@@ -223,17 +164,16 @@ public class VisorPDF extends javax.swing.JFrame {
             jScrollPane1.getHorizontalScrollBar().setPreferredSize(
                     new Dimension(Integer.MAX_VALUE, 10));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "No se pudo cargar Pdf");
+            JOptionPane.showMessageDialog(this, "Cannot Load Pdf");
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarXML;
     private javax.swing.JButton btnConvertir;
-    public javax.swing.JComboBox<String> cbFacturas;
+    private javax.swing.JComboBox<String> cbFacturas;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelCentro;
     private javax.swing.JPanel panelDerecha;
     private javax.swing.JPanel panelIzquierda;
@@ -242,100 +182,4 @@ public class VisorPDF extends javax.swing.JFrame {
     private javax.swing.JPanel panelSur;
     private javax.swing.JTextField tfRutaXML;
     // End of variables declaration//GEN-END:variables
-
-    public JButton getBtnAgregarXML() {
-        return btnAgregarXML;
-    }
-
-    public void setBtnAgregarXML(JButton btnAgregarXML) {
-        this.btnAgregarXML = btnAgregarXML;
-    }
-
-    public JButton getBtnConvertir() {
-        return btnConvertir;
-    }
-
-    public void setBtnConvertir(JButton btnConvertir) {
-        this.btnConvertir = btnConvertir;
-    }
-
-    public JComboBox<String> getCbFacturas() {
-        return cbFacturas;
-    }
-
-    public void setCbFacturas(JComboBox<String> cbFacturas) {
-        this.cbFacturas = cbFacturas;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    public JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    public void setjScrollPane2(JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
-
-    public JPanel getPanelCentro() {
-        return panelCentro;
-    }
-
-    public void setPanelCentro(JPanel panelCentro) {
-        this.panelCentro = panelCentro;
-    }
-
-    public JPanel getPanelDerecha() {
-        return panelDerecha;
-    }
-
-    public void setPanelDerecha(JPanel panelDerecha) {
-        this.panelDerecha = panelDerecha;
-    }
-
-    public JPanel getPanelIzquierda() {
-        return panelIzquierda;
-    }
-
-    public void setPanelIzquierda(JPanel panelIzquierda) {
-        this.panelIzquierda = panelIzquierda;
-    }
-
-    public JPanel getPanelMain() {
-        return panelMain;
-    }
-
-    public void setPanelMain(JPanel panelMain) {
-        this.panelMain = panelMain;
-    }
-
-    public JPanel getPanelNorte() {
-        return panelNorte;
-    }
-
-    public void setPanelNorte(JPanel panelNorte) {
-        this.panelNorte = panelNorte;
-    }
-
-    public JPanel getPanelSur() {
-        return panelSur;
-    }
-
-    public void setPanelSur(JPanel panelSur) {
-        this.panelSur = panelSur;
-    }
-
-    public JTextField getTfRutaXML() {
-        return tfRutaXML;
-    }
-
-    public void setTfRutaXML(JTextField tfRutaXML) {
-        this.tfRutaXML = tfRutaXML;
-    }
 }
