@@ -18,6 +18,10 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Factura Manzanillo");
+        jtfFechainicial.setColumns(15);
+        jtfFechaTerminal.setColumns(15);
+        jtfReferencia.setColumns(15);
+        jtfValorLetra.setColumns(20);
     }
 
     /**
@@ -29,21 +33,68 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pPrincipal = new javax.swing.JPanel();
+        pNorte = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pSur = new javax.swing.JPanel();
+        btnEscribir = new javax.swing.JButton();
+        pCentral = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jtfFechainicial = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jtfFechaTerminal = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jtfReferencia = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jtfValorLetra = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        pPrincipal.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Pictures\\Cotecon.PNG")); // NOI18N
+        pNorte.add(jLabel1);
+
+        pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);
+
+        btnEscribir.setText("Escribir y convertir");
+        btnEscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEscribirActionPerformed(evt);
+            }
+        });
+        pSur.add(btnEscribir);
+
+        pPrincipal.add(pSur, java.awt.BorderLayout.PAGE_END);
+
+        jLabel2.setText("Fecha Inicial de atraque");
+        pCentral.add(jLabel2);
+        pCentral.add(jtfFechainicial);
+
+        jLabel3.setText("Fecha Termianl de atraque");
+        pCentral.add(jLabel3);
+        pCentral.add(jtfFechaTerminal);
+
+        jLabel4.setText("Referencia");
+        pCentral.add(jLabel4);
+        pCentral.add(jtfReferencia);
+
+        jLabel5.setText("Valor de la factura con letra");
+        pCentral.add(jLabel5);
+        pCentral.add(jtfValorLetra);
+
+        pPrincipal.add(pCentral, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(pPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscribirActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Imprime algo");
+        
+    }//GEN-LAST:event_btnEscribirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -51,5 +102,19 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEscribir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jtfFechaTerminal;
+    private javax.swing.JTextField jtfFechainicial;
+    private javax.swing.JTextField jtfReferencia;
+    private javax.swing.JTextField jtfValorLetra;
+    private javax.swing.JPanel pCentral;
+    private javax.swing.JPanel pNorte;
+    private javax.swing.JPanel pPrincipal;
+    private javax.swing.JPanel pSur;
     // End of variables declaration//GEN-END:variables
 }
