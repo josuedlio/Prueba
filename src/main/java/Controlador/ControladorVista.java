@@ -20,7 +20,7 @@ import org.icepdf.ri.common.SwingViewBuilder;
 public class ControladorVista {
 //    VisorPDF vista = new VisorPDF();
     
-    public void openSegundoPDF(String file,VisorPDF vista){
+    public static void openSegundoPDF(String file,VisorPDF vista){
         try {
             SwingController control = new SwingController();
             SwingViewBuilder factry = new SwingViewBuilder(control);

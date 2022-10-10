@@ -5,6 +5,7 @@
 package com.mycompany.machacas.Vista;
 
 import Controlador.ControladorVista;
+import Controlador.EscribirSSA;
 import Controlador.ReadXML;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,6 +34,7 @@ public class VisorPDF extends javax.swing.JFrame {
 
     public VisorPDF() {
         initComponents();
+        EscribirSSA es = new EscribirSSA();
         this.cbFacturas.addItem("SSA");
         this.cbFacturas.addItem("Manzanillo");
         this.cbFacturas.addItem("HTP");
@@ -136,22 +138,24 @@ public class VisorPDF extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            this.tfRutaXML.setText(chooser.getSelectedFile().getAbsolutePath());
+            tfRutaXML.setText(chooser.getSelectedFile().getAbsolutePath());
 //            rutaXML = chooser.getSelectedFile().getAbsolutePath().contains(".pdf");
-            if (ReadXML.getRFC(this.tfRutaXML.getText()).equals("SMH030404NT7")) {
+            if (ReadXML.getRFC(tfRutaXML.getText()).equals("SMH030404NT7")) {
                 //SSA
-                openpdf(rutaXML);
-                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
-            } else if (ReadXML.getRFC(this.tfRutaXML.getText()).equals("CMA100106AH8")) {
+//                openpdf(rutaXML);
+               // cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
+                System.out.println("algo");
+            } else if (ReadXML.getRFC(tfRutaXML.getText()).equals("CMA100106AH8")) {
                     cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf",this);
                 //Manzanillo
                 System.out.println("CMA100106AH8");
-            } else if (ReadXML.getRFC(this.tfRutaXML.getText()).equals("TIM980730NK3")) {
+            } else if (ReadXML.getRFC(tfRutaXML.getText()).equals("TIM980730NK3")) {
                 cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHPT.pdf",this);
                 //HTP
                 System.out.println("TIM980730NK3");
             }
             btnConvertir.setEnabled(true);
+           
         }
     }//GEN-LAST:event_btnAgregarXMLActionPerformed
 
@@ -183,10 +187,11 @@ public class VisorPDF extends javax.swing.JFrame {
         switch (facturaSelec) {
             case "Manzanillo":
                 Ventana_Manzanillo vm = new Ventana_Manzanillo(this, true);
-                vm.setVisible(true);
+                vm.setVisible(true);              
                 break;
             case "SSA":
                 Ventana_SSA sa = new Ventana_SSA(this, true);
+                Ventana_SSA.jtfObtenXML.setText(tfRutaXML.getText());
                 sa.setVisible(true);
                 break;
             case "HTP":
@@ -195,7 +200,7 @@ public class VisorPDF extends javax.swing.JFrame {
                 break;
             default:
                 //System.exit(0);
-                this.tfRutaXML.setText(" ");
+                tfRutaXML.setText(" ");
                 this.btnConvertir.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "No has seleccionado una factura",
                         "Selecciona alguna factura", JOptionPane.WARNING_MESSAGE);
@@ -240,7 +245,7 @@ public class VisorPDF extends javax.swing.JFrame {
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelNorte;
     private javax.swing.JPanel panelSur;
-    private javax.swing.JTextField tfRutaXML;
+    public javax.swing.JTextField tfRutaXML;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnAgregarXML() {
@@ -331,11 +336,11 @@ public class VisorPDF extends javax.swing.JFrame {
         this.panelSur = panelSur;
     }
 
-    public JTextField getTfRutaXML() {
+    public  JTextField getTfRutaXML() {
         return tfRutaXML;
     }
 
     public void setTfRutaXML(JTextField tfRutaXML) {
-        this.tfRutaXML = tfRutaXML;
+        tfRutaXML = tfRutaXML;
     }
 }
