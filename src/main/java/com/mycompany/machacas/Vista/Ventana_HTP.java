@@ -16,12 +16,11 @@ import javax.swing.border.TitledBorder;
  */
 public class Ventana_HTP extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Ventana_HTP
-     */
-    public Ventana_HTP(java.awt.Frame parent, boolean modal) {
+    VisorPDF padre;
+    public Ventana_HTP(VisorPDF parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.padre = parent;
         setTitle("Factura HTP");
         setBounds(50, 50, 1200, 300);
         jtfImportecLetra.setColumns(30);
@@ -48,6 +47,10 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfPeso.setBorder(pes);
         jtfElaborado.setBorder(elaborado);
         jtfImportecLetra.setBorder(numFac);
+        
+        if( this.padre.cbFacturas.getSelectedItem() != null ){
+            System.out.println("Valor seleccionado "+this.padre.cbFacturas.getSelectedItem());
+        }
 
     }
 
@@ -79,7 +82,6 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfPeso = new javax.swing.JTextField();
         jtfElaborado = new javax.swing.JTextField();
         pNorte = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
@@ -169,10 +171,6 @@ public class Ventana_HTP extends javax.swing.JDialog {
         pCentral.add(jtfElaborado);
 
         pPrincipal.add(pCentral, java.awt.BorderLayout.CENTER);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Pictures\\Timsa.PNG")); // NOI18N
-        pNorte.add(jLabel2);
-
         pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(pPrincipal, java.awt.BorderLayout.CENTER);
@@ -241,7 +239,6 @@ public class Ventana_HTP extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jtfBuque;
     private javax.swing.JTextField jtfCategoria;

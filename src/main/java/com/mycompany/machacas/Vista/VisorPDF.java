@@ -37,7 +37,8 @@ public class VisorPDF extends javax.swing.JFrame {
         EscribirSSA es = new EscribirSSA();
         this.cbFacturas.addItem("SSA");
         this.cbFacturas.addItem("Manzanillo");
-        this.cbFacturas.addItem("HTP");
+        this.cbFacturas.addItem("Timsa");
+        this.cbFacturas.addItem("Ocupa");
         btnConvertir.setEnabled(false);
         tfRutaXML.setEnabled(false);
         tfRutaXML.setColumns(30);
@@ -133,29 +134,34 @@ public class VisorPDF extends javax.swing.JFrame {
 
     private void btnAgregarXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarXMLActionPerformed
         // TODO add your handling code here:
-          JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Selecciona un archivo xml", "xml");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             tfRutaXML.setText(chooser.getSelectedFile().getAbsolutePath());
-//            rutaXML = chooser.getSelectedFile().getAbsolutePath().contains(".pdf");
             if (ReadXML.getRFC(tfRutaXML.getText()).equals("SMH030404NT7")) {
                 //SSA
-//                openpdf(rutaXML);
-               // cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
-                System.out.println("algo");
+                rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
+                openpdf(rutaPDF);
+                 cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
             } else if (ReadXML.getRFC(tfRutaXML.getText()).equals("CMA100106AH8")) {
-                    cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf",this);
+                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf", this);
                 //Manzanillo
+                rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
+                openpdf(rutaPDF);
                 System.out.println("CMA100106AH8");
             } else if (ReadXML.getRFC(tfRutaXML.getText()).equals("TIM980730NK3")) {
-                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHPT.pdf",this);
+                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHPT.pdf", this);
                 //HTP
+                rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
+                openpdf(rutaPDF);
                 System.out.println("TIM980730NK3");
+            }else if(ReadXML.getRFC(tfRutaXML.getText()).equals("OCP9209235J9")){
+                System.out.println("Ocupa");
             }
             btnConvertir.setEnabled(true);
-           
+
         }
     }//GEN-LAST:event_btnAgregarXMLActionPerformed
 
@@ -188,17 +194,22 @@ public class VisorPDF extends javax.swing.JFrame {
             case "Manzanillo":
                 Ventana_Manzanillo vm = new Ventana_Manzanillo(this, true);
                 Ventana_Manzanillo.jtfObtXML.setText(tfRutaXML.getText());
-                vm.setVisible(true);              
+                vm.setVisible(true);
                 break;
             case "SSA":
                 Ventana_SSA sa = new Ventana_SSA(this, true);
                 Ventana_SSA.jtfObtenXML.setText(tfRutaXML.getText());
                 sa.setVisible(true);
                 break;
-            case "HTP":
+            case "Timsa":
                 Ventana_HTP vh = new Ventana_HTP(this, true);
-                Ventana_HTP.jtfObXML.setText(tfRutaXML.getText());
+//                Ventana_HTP.jtfObXML.setText(tfRutaXML.getText());
                 vh.setVisible(true);
+                break;
+                case "Ocupa":
+                Ventana_Ocupa vo = new Ventana_Ocupa(this, true);
+//                Ventana_Ocupa.jtfObXML.setText(tfRutaXML.getText());
+                vo.setVisible(true);
                 break;
             default:
                 //System.exit(0);
@@ -338,7 +349,7 @@ public class VisorPDF extends javax.swing.JFrame {
         this.panelSur = panelSur;
     }
 
-    public  JTextField getTfRutaXML() {
+    public JTextField getTfRutaXML() {
         return tfRutaXML;
     }
 

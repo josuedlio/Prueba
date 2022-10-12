@@ -72,7 +72,7 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
 
         pPrincipal.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Pictures\\Cotecon.PNG")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Documents\\NetBeansProjects\\Prueba\\src\\main\\java\\imagenes\\Cotecon.PNG")); // NOI18N
         pNorte.add(jLabel1);
 
         pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);

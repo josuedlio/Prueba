@@ -7,10 +7,14 @@ package com.mycompany.machacas.Vista;
 
 import Controlador.ControladorVista;
 import Controlador.EscribirSSA;
+import java.net.URL;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import org.icepdf.ri.common.widgets.ImageColorIcon;
 
 /**
  *
@@ -49,7 +53,8 @@ public class Ventana_SSA extends javax.swing.JDialog {
         jtfNotas.setBorder(borderN);
         jtfValorLetra.setBorder(borderV);
         jtfValorLetra.setColumns(30);
-
+        
+        
     }
 
     /**
@@ -63,7 +68,7 @@ public class Ventana_SSA extends javax.swing.JDialog {
 
         pPrincipal = new javax.swing.JPanel();
         pNorte = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         pSur = new javax.swing.JPanel();
         jtfObtenXML = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -80,8 +85,8 @@ public class Ventana_SSA extends javax.swing.JDialog {
 
         pPrincipal.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Pictures\\ssa.PNG")); // NOI18N
-        pNorte.add(jLabel1);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Pictures\\ssa.PNG")); // NOI18N
+        pNorte.add(jLabel2);
 
         pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);
 
@@ -226,7 +231,7 @@ public class Ventana_SSA extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jtfBuque;
     private javax.swing.JTextField jtfBuqueDos;
     private javax.swing.JTextField jtfNotas;
