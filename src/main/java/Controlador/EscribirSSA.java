@@ -51,9 +51,9 @@ public class EscribirSSA {
                 pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "LugarExpedicion"), 170, 583, 0);//Lugar Expedicion
                 pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "Fecha"), 270, 583, 0);//Fecha Emision
                 pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Receptor", "UsoCFDI"), 530, 583, 0);//USO CFDI
-                pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "SubTotal"), 560, 240, 0);//Sub total
-                pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Impuestos", "TotalImpuestosTrasladados"), 560, 228, 0);//IVA
-                                pageCB.showTextAligned(pages, "$ "+ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "Total"), 560, 215, 0);//IVA
+                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "SubTotal"), 560, 240, 0);//Sub total
+                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Impuestos", "TotalImpuestosTrasladados"), 560, 228, 0);//IVA
+                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "Total"), 560, 215, 0);//Total
                 pageCB.showTextAligned(pages, buque, 90, 553, 0); //Buque
                 pageCB.showTextAligned(pages, segundo_buque, 95, 545, 0); // Segundo Buque
                 pageCB.showTextAligned(pages, solicitud, 240, 553, 0); // Solicitud de servicio

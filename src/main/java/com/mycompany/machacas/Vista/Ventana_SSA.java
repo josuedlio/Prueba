@@ -18,8 +18,6 @@ import javax.swing.border.TitledBorder;
  */
 public class Ventana_SSA extends javax.swing.JDialog {
 
-    
-    
     public JTextField getJtfObtenXML() {
         return jtfObtenXML;
     }
@@ -34,24 +32,24 @@ public class Ventana_SSA extends javax.swing.JDialog {
     public Ventana_SSA(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setBounds(50, 50, 800, 500);
+        setBounds(50, 50, 1000, 400);
         setTitle("Factura SSA");
         jtfObtenXML.setEnabled(false);
         jtfObtenXML.setColumns(20);
-         Border borderB = new TitledBorder("Buque");
-         Border borderS = new TitledBorder("Solicitud de Servicio");
-         Border borderR = new TitledBorder("Referencia");
-         Border borderN = new TitledBorder("Notas");
-         Border borderV = new TitledBorder("Valor de la factura con letra");
-         jtfBuque.setBorder(borderB);
-         jtfBuqueDos.setBorder(borderB);
-         jtfSolicitud.setBorder(borderS);
-         jtfSolocitudDos.setBorder(borderS);
-         jtfReferencia.setBorder(borderR);
-         jtfNotas.setBorder(borderN);
-         jtfValorLetra.setBorder(borderV);
-         jtfValorLetra.setColumns(30);
-        
+        Border borderB = new TitledBorder("Buque");
+        Border borderS = new TitledBorder("Solicitud de Servicio");
+        Border borderR = new TitledBorder("Referencia");
+        Border borderN = new TitledBorder("Notas");
+        Border borderV = new TitledBorder("Valor de la factura con letra");
+        jtfBuque.setBorder(borderB);
+        jtfBuqueDos.setBorder(borderB);
+        jtfSolicitud.setBorder(borderS);
+        jtfSolocitudDos.setBorder(borderS);
+        jtfReferencia.setBorder(borderR);
+        jtfNotas.setBorder(borderN);
+        jtfValorLetra.setBorder(borderV);
+        jtfValorLetra.setColumns(30);
+
     }
 
     /**
@@ -87,6 +85,7 @@ public class Ventana_SSA extends javax.swing.JDialog {
 
         pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);
 
+        jtfObtenXML.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfObtenXML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfObtenXMLActionPerformed(evt);
@@ -170,18 +169,19 @@ public class Ventana_SSA extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jtfBuque.getText().isEmpty() || jtfBuqueDos.getText().isEmpty() 
-                ||jtfNotas.getText().isEmpty() || jtfSolicitud.getText().isEmpty() 
-                || jtfSolocitudDos.getText().isEmpty()|| jtfValorLetra.getText().isEmpty()|| jtfReferencia.getText().isEmpty()) {
+        if (jtfBuque.getText().isEmpty() || jtfBuqueDos.getText().isEmpty()
+                || jtfNotas.getText().isEmpty() || jtfSolicitud.getText().isEmpty()
+                || jtfSolocitudDos.getText().isEmpty() || jtfValorLetra.getText().isEmpty() || jtfReferencia.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tienes algún campo vacio",
                     "Campos vacios", JOptionPane.WARNING_MESSAGE);
-        }else{
+        } else {
             EscribirSSA es = new EscribirSSA();
-            es.escrituraSSA(jtfBuque.getText(),jtfBuqueDos.getText(),jtfSolicitud.getText(),
-                    jtfSolocitudDos.getText(),jtfReferencia.getText(),jtfNotas.getText(),
+            es.escrituraSSA(jtfBuque.getText(), jtfBuqueDos.getText(), jtfSolicitud.getText(),
+                    jtfSolocitudDos.getText(), jtfReferencia.getText(), jtfNotas.getText(),
                     jtfValorLetra.getText());
+            JOptionPane.showMessageDialog(this, "Se genero un nuevo pdf ", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
+
             //ControladorVista.openSegundoPDF("file:///C:/Users/josue.ochoa/Downloads/MachacaSSA.pdf", v);
-            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -194,7 +194,7 @@ public class Ventana_SSA extends javax.swing.JDialog {
     }//GEN-LAST:event_jtfSolicitudMouseClicked
 
     private void jtfNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNotasMouseClicked
-       jtfNotas.setText("");
+        jtfNotas.setText("");
     }//GEN-LAST:event_jtfNotasMouseClicked
 
     private void jtfValorLetraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfValorLetraMouseClicked

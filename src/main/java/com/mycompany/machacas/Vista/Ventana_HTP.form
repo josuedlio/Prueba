@@ -48,6 +48,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
+            <Component class="javax.swing.JTextField" name="jtfImportecLetra">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Importe con letra"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfImportecLetraActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Escribir y convertir"/>
@@ -63,6 +71,19 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtfObXML">
+              <Properties>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfObXMLActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -86,25 +107,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtfBuqueMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfBuqueActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jtfnoBuque">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="No.Buque"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtfnoBuqueMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jtfPedimento">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pedimento"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jtfrfCliente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Referencia cliente"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfnomContenedor">
               <Properties>
@@ -126,6 +130,19 @@
                 <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JTextField" name="jtfnoBuque">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buque"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtfnoBuqueMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtfPedimento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pedimento"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JTextField" name="jtfCategoria">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Categoria"/>
@@ -140,14 +157,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Elaborado por"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jtfImportecLetra">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Importe con letra"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfImportecLetraActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

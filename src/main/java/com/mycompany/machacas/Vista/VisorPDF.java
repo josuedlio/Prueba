@@ -187,6 +187,7 @@ public class VisorPDF extends javax.swing.JFrame {
         switch (facturaSelec) {
             case "Manzanillo":
                 Ventana_Manzanillo vm = new Ventana_Manzanillo(this, true);
+                Ventana_Manzanillo.jtfObtXML.setText(tfRutaXML.getText());
                 vm.setVisible(true);              
                 break;
             case "SSA":
@@ -196,6 +197,7 @@ public class VisorPDF extends javax.swing.JFrame {
                 break;
             case "HTP":
                 Ventana_HTP vh = new Ventana_HTP(this, true);
+                Ventana_HTP.jtfObXML.setText(tfRutaXML.getText());
                 vh.setVisible(true);
                 break;
             default:

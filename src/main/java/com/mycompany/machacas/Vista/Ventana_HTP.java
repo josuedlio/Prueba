@@ -5,6 +5,11 @@
  */
 package com.mycompany.machacas.Vista;
 
+import Controlador.EscribirHTP;
+import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+
 /**
  *
  * @author josue
@@ -18,8 +23,32 @@ public class Ventana_HTP extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Factura HTP");
+        setBounds(50, 50, 1200, 300);
         jtfImportecLetra.setColumns(30);
-        
+        jtfObXML.setColumns(20);
+        jtfObXML.setEnabled(false);
+        Border buque = new TitledBorder("Buque");
+        Border pedimento = new TitledBorder("Pedimento");
+        Border nomContenedor = new TitledBorder("Nombre de Contenedor");
+        Border posicion = new TitledBorder("Posición");
+        Border tipo = new TitledBorder("Tipo");
+        Border medida = new TitledBorder("Medida");
+        Border catg = new TitledBorder("Categoria");
+        Border pes = new TitledBorder("Peso");
+        Border elaborado = new TitledBorder("Elaborado por");
+        Border numFac = new TitledBorder("Importe con letra");
+        jtfBuque.setBorder(buque);
+        jtfnoBuque.setBorder(buque);
+        jtfnomContenedor.setBorder(nomContenedor);
+        jtfPedimento.setBorder(pedimento);
+        jtfPosicion.setBorder(posicion);
+        jtfTipo.setBorder(tipo);
+        jtfMedida.setBorder(medida);
+        jtfCategoria.setBorder(catg);
+        jtfPeso.setBorder(pes);
+        jtfElaborado.setBorder(elaborado);
+        jtfImportecLetra.setBorder(numFac);
+
     }
 
     /**
@@ -34,21 +63,21 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jTextField2 = new javax.swing.JTextField();
         pPrincipal = new javax.swing.JPanel();
         pSur = new javax.swing.JPanel();
+        jtfImportecLetra = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jtfObXML = new javax.swing.JTextField();
         pCentral = new javax.swing.JPanel();
         jtfBuque = new javax.swing.JTextField();
-        jtfnoBuque = new javax.swing.JTextField();
-        jtfPedimento = new javax.swing.JTextField();
-        jtfrfCliente = new javax.swing.JTextField();
         jtfnomContenedor = new javax.swing.JTextField();
         jtfPosicion = new javax.swing.JTextField();
         jtfMedida = new javax.swing.JTextField();
         jtfTipo = new javax.swing.JTextField();
+        jtfnoBuque = new javax.swing.JTextField();
+        jtfPedimento = new javax.swing.JTextField();
         jtfCategoria = new javax.swing.JTextField();
         jtfPeso = new javax.swing.JTextField();
         jtfElaborado = new javax.swing.JTextField();
-        jtfImportecLetra = new javax.swing.JTextField();
         pNorte = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -57,6 +86,14 @@ public class Ventana_HTP extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pPrincipal.setLayout(new java.awt.BorderLayout());
+
+        jtfImportecLetra.setText("Importe con letra");
+        jtfImportecLetra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfImportecLetraActionPerformed(evt);
+            }
+        });
+        pSur.add(jtfImportecLetra);
 
         jButton1.setText("Escribir y convertir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +111,14 @@ public class Ventana_HTP extends javax.swing.JDialog {
         });
         pSur.add(jButton2);
 
+        jtfObXML.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtfObXML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfObXMLActionPerformed(evt);
+            }
+        });
+        pSur.add(jtfObXML);
+
         pPrincipal.add(pSur, java.awt.BorderLayout.PAGE_END);
 
         pCentral.setLayout(new java.awt.GridLayout(2, 1, 3, 3));
@@ -84,21 +129,12 @@ public class Ventana_HTP extends javax.swing.JDialog {
                 jtfBuqueMouseClicked(evt);
             }
         });
-        pCentral.add(jtfBuque);
-
-        jtfnoBuque.setText("No.Buque");
-        jtfnoBuque.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtfnoBuqueMouseClicked(evt);
+        jtfBuque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfBuqueActionPerformed(evt);
             }
         });
-        pCentral.add(jtfnoBuque);
-
-        jtfPedimento.setText("Pedimento");
-        pCentral.add(jtfPedimento);
-
-        jtfrfCliente.setText("Referencia cliente");
-        pCentral.add(jtfrfCliente);
+        pCentral.add(jtfBuque);
 
         jtfnomContenedor.setText("Nombre contenedor");
         pCentral.add(jtfnomContenedor);
@@ -112,6 +148,17 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfTipo.setText("Tipo");
         pCentral.add(jtfTipo);
 
+        jtfnoBuque.setText("Buque");
+        jtfnoBuque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtfnoBuqueMouseClicked(evt);
+            }
+        });
+        pCentral.add(jtfnoBuque);
+
+        jtfPedimento.setText("Pedimento");
+        pCentral.add(jtfPedimento);
+
         jtfCategoria.setText("Categoria");
         pCentral.add(jtfCategoria);
 
@@ -120,14 +167,6 @@ public class Ventana_HTP extends javax.swing.JDialog {
 
         jtfElaborado.setText("Elaborado por");
         pCentral.add(jtfElaborado);
-
-        jtfImportecLetra.setText("Importe con letra");
-        jtfImportecLetra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfImportecLetraActionPerformed(evt);
-            }
-        });
-        pCentral.add(jtfImportecLetra);
 
         pPrincipal.add(pCentral, java.awt.BorderLayout.CENTER);
 
@@ -147,13 +186,29 @@ public class Ventana_HTP extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (jtfBuque.getText().isEmpty() || jtfnoBuque.getText().isEmpty()
+                || jtfPedimento.getText().isEmpty() || jtfnomContenedor.getText().isEmpty()
+                || jtfPosicion.getText().isEmpty() || jtfTipo.getText().isEmpty()
+                || jtfMedida.getText().isEmpty() || jtfCategoria.getText().isEmpty()
+                || jtfPeso.getText().isEmpty() || jtfElaborado.getText().isEmpty()
+                || jtfImportecLetra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tienes campos vacios", "¡Campos vacios!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            EscribirHTP es = new EscribirHTP();
+            es.escrituraHTP(jtfBuque.getText(), jtfnoBuque.getText(),
+                    jtfnomContenedor.getText(), jtfPedimento.getText(), jtfPosicion.getText(),
+                    jtfCategoria.getText(), jtfMedida.getText(),
+                    jtfPeso.getText(), jtfTipo.getText(), jtfElaborado.getText(), jtfImportecLetra.getText());
+                        JOptionPane.showMessageDialog(this, "Se genero un nuevo pdf ", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtfBuqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfBuqueMouseClicked
     }//GEN-LAST:event_jtfBuqueMouseClicked
 
     private void jtfnoBuqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfnoBuqueMouseClicked
-        
+
     }//GEN-LAST:event_jtfnoBuqueMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -161,7 +216,6 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfBuque.setText("");
         jtfnoBuque.setText("");
         jtfPedimento.setText("");
-        jtfrfCliente.setText("");
         jtfnomContenedor.setText("");
         jtfPosicion.setText("");
         jtfTipo.setText("");
@@ -172,10 +226,17 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfImportecLetra.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jtfBuqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBuqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfBuqueActionPerformed
+
+    private void jtfObXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfObXMLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfObXMLActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -187,13 +248,13 @@ public class Ventana_HTP extends javax.swing.JDialog {
     private javax.swing.JTextField jtfElaborado;
     private javax.swing.JTextField jtfImportecLetra;
     private javax.swing.JTextField jtfMedida;
+    public static javax.swing.JTextField jtfObXML;
     private javax.swing.JTextField jtfPedimento;
     private javax.swing.JTextField jtfPeso;
     private javax.swing.JTextField jtfPosicion;
     private javax.swing.JTextField jtfTipo;
     private javax.swing.JTextField jtfnoBuque;
     private javax.swing.JTextField jtfnomContenedor;
-    private javax.swing.JTextField jtfrfCliente;
     private javax.swing.JPanel pCentral;
     private javax.swing.JPanel pNorte;
     private javax.swing.JPanel pPrincipal;

@@ -5,6 +5,11 @@
  */
 package com.mycompany.machacas.Vista;
 
+import Controlador.EscribirMNZ;
+import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+
 /**
  *
  * @author josue
@@ -18,10 +23,23 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Factura Manzanillo");
-        jtfFechainicial.setColumns(15);
-        jtfFechaTerminal.setColumns(15);
-        jtfReferencia.setColumns(15);
-        jtfValorLetra.setColumns(20);
+        setBounds(50, 50, 700, 300);
+        jtfObtXML.setEnabled(false);
+        Border bordeB = new TitledBorder("Buque");
+        Border bordeV = new TitledBorder("Viaje");
+        Border bordeAi = new TitledBorder("Fecha Atraque Inicial");
+        Border bordeAn = new TitledBorder("Fecha Atraque Final");
+        Border bordeR = new TitledBorder("Referencia");
+        Border bordeN = new TitledBorder("Número referencia");
+        Border borderVa = new TitledBorder("Valor de la factura");
+
+        jtfBuque.setBorder(bordeB);
+        jtfViaje.setBorder(bordeV);
+        jtfFechaInicial.setBorder(bordeAi);
+        jtfFechaFinal.setBorder(bordeAn);
+        jtfReferencia.setBorder(bordeR);
+        jtfNumR.setBorder(bordeN);
+        jtfValorFac.setBorder(borderVa);
     }
 
     /**
@@ -38,15 +56,17 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         pSur = new javax.swing.JPanel();
         btnEscribir = new javax.swing.JButton();
+        jtfObtXML = new javax.swing.JTextField();
         pCentral = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jtfFechainicial = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jtfFechaTerminal = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jtfBuque = new javax.swing.JTextField();
+        jtfFechaInicial = new javax.swing.JTextField();
         jtfReferencia = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jtfValorLetra = new javax.swing.JTextField();
+        jtfViaje = new javax.swing.JTextField();
+        jtfFechaFinal = new javax.swing.JTextField();
+        jtfNumR = new javax.swing.JTextField();
+        jtfValorFac = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,23 +85,33 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         });
         pSur.add(btnEscribir);
 
+        jtfObtXML.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        pSur.add(jtfObtXML);
+
         pPrincipal.add(pSur, java.awt.BorderLayout.PAGE_END);
 
-        jLabel2.setText("Fecha Inicial de atraque");
-        pCentral.add(jLabel2);
-        pCentral.add(jtfFechainicial);
+        pCentral.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setText("Fecha Termianl de atraque");
-        pCentral.add(jLabel3);
-        pCentral.add(jtfFechaTerminal);
+        jPanel1.setLayout(new java.awt.GridLayout(2, 2));
 
-        jLabel4.setText("Referencia");
-        pCentral.add(jLabel4);
-        pCentral.add(jtfReferencia);
+        jPanel2.setLayout(new java.awt.GridLayout(2, 2));
+        jPanel2.add(jtfBuque);
+        jPanel2.add(jtfFechaInicial);
+        jPanel2.add(jtfReferencia);
 
-        jLabel5.setText("Valor de la factura con letra");
-        pCentral.add(jLabel5);
-        pCentral.add(jtfValorLetra);
+        jtfViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfViajeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jtfViaje);
+        jPanel2.add(jtfFechaFinal);
+        jPanel2.add(jtfNumR);
+
+        jPanel1.add(jPanel2);
+        jPanel1.add(jtfValorFac);
+
+        pCentral.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pPrincipal.add(pCentral, java.awt.BorderLayout.CENTER);
 
@@ -91,27 +121,42 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscribirActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Imprime algo");
-        
+        if (jtfBuque.getText().isEmpty() || jtfViaje.getText().isEmpty() || jtfFechaInicial.getText().isEmpty()
+                || jtfFechaFinal.getText().isEmpty() || jtfReferencia.getText().isEmpty() || jtfNumR.getText().isEmpty()||
+                jtfValorFac.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tienes campos vacios", "¡Campos vacios!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            EscribirMNZ es = new EscribirMNZ();
+            es.escrituraMNZ(jtfBuque.getText(), jtfViaje.getText(),
+                    jtfFechaInicial.getText(), jtfFechaFinal.getText(),
+                    jtfReferencia.getText(), jtfNumR.getText(),jtfValorFac.getText());
+            JOptionPane.showMessageDialog(this, "Se genero un nuevo pdf ", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_btnEscribirActionPerformed
+
+    private void jtfViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfViajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfViajeActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEscribir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jtfFechaTerminal;
-    private javax.swing.JTextField jtfFechainicial;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jtfBuque;
+    private javax.swing.JTextField jtfFechaFinal;
+    private javax.swing.JTextField jtfFechaInicial;
+    private javax.swing.JTextField jtfNumR;
+    public static javax.swing.JTextField jtfObtXML;
     private javax.swing.JTextField jtfReferencia;
-    private javax.swing.JTextField jtfValorLetra;
+    private javax.swing.JTextField jtfValorFac;
+    private javax.swing.JTextField jtfViaje;
     private javax.swing.JPanel pCentral;
     private javax.swing.JPanel pNorte;
     private javax.swing.JPanel pPrincipal;
