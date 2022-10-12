@@ -4,6 +4,7 @@
  */
 package com.mycompany.machacas.Vista;
 
+import Controlador.EscribirOcupa;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -38,7 +39,9 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
         jtfNotas.setBorder(bordeN);
         Border bordeV = new TitledBorder("Total con letra");
         jtfImporteLetra.setBorder(bordeV);
+        jtfImporteLetra.setColumns(40);
 
+        setBounds(50, 50, 783, 500);
     }
 
     /**
@@ -53,8 +56,8 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
         pPrincipal = new javax.swing.JPanel();
         pSur = new javax.swing.JPanel();
         jtfImporteLetra = new javax.swing.JTextField();
-        jtfObXML = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jtfObXML = new javax.swing.JTextField();
         pNorte = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         pCentral = new javax.swing.JPanel();
@@ -69,8 +72,7 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
 
         pPrincipal.setLayout(new java.awt.BorderLayout());
 
-        jtfObXML.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jtfObXML.setEnabled(false);
+        pSur.add(jtfImporteLetra);
 
         jButton1.setText("Escribir y generar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,30 +80,11 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+        pSur.add(jButton1);
 
-        javax.swing.GroupLayout pSurLayout = new javax.swing.GroupLayout(pSur);
-        pSur.setLayout(pSurLayout);
-        pSurLayout.setHorizontalGroup(
-            pSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtfImporteLetra, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(pSurLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtfObXML, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135)
-                .addComponent(jButton1)
-                .addContainerGap(220, Short.MAX_VALUE))
-        );
-        pSurLayout.setVerticalGroup(
-            pSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pSurLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtfImporteLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pSurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfObXML, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        jtfObXML.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtfObXML.setEnabled(false);
+        pSur.add(jtfObXML);
 
         pPrincipal.add(pSur, java.awt.BorderLayout.PAGE_END);
 
@@ -132,6 +115,9 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
                 || jtfImporteLetra.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tienes campos vacios", "¡Campos vacios!", JOptionPane.WARNING_MESSAGE);
         } else {
+            EscribirOcupa es = new EscribirOcupa();
+            es.escrituraOcupa(jtfNoOcupa.getText(), jtfNoSolicitud.getText(), jtfNoBuque.getText(),
+                    jtfPeso.getText(), jtfContenedor.getText(), jtfNotas.getText(), jtfImporteLetra.getText());
             JOptionPane.showMessageDialog(this, "Se genero pdf", "¡Nueva factura!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

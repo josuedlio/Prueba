@@ -141,24 +141,28 @@ public class VisorPDF extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             tfRutaXML.setText(chooser.getSelectedFile().getAbsolutePath());
             if (ReadXML.getRFC(tfRutaXML.getText()).equals("SMH030404NT7")) {
-                //SSA
-                rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
-                openpdf(rutaPDF);
-                 cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
             } else if (ReadXML.getRFC(tfRutaXML.getText()).equals("CMA100106AH8")) {
-                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf", this);
+                ControladorVista.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf", this);
                 //Manzanillo
                 rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
                 openpdf(rutaPDF);
                 System.out.println("CMA100106AH8");
             } else if (ReadXML.getRFC(tfRutaXML.getText()).equals("TIM980730NK3")) {
-                cv.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHPT.pdf", this);
+                ControladorVista.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaHPT.pdf", this);
                 //HTP
                 rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
                 openpdf(rutaPDF);
                 System.out.println("TIM980730NK3");
             }else if(ReadXML.getRFC(tfRutaXML.getText()).equals("OCP9209235J9")){
                 System.out.println("Ocupa");
+                rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
+                openpdf(rutaPDF);
+                ControladorVista.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaOCU.pdf", this);
+            } else {
+                //SSA
+                rutaPDF = chooser.getSelectedFile().getAbsolutePath().replace(".xml", ".pdf");
+                openpdf(rutaPDF);
+                ControladorVista.openSegundoPDF("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf", this);
             }
             btnConvertir.setEnabled(true);
 
@@ -203,12 +207,12 @@ public class VisorPDF extends javax.swing.JFrame {
                 break;
             case "Timsa":
                 Ventana_HTP vh = new Ventana_HTP(this, true);
-//                Ventana_HTP.jtfObXML.setText(tfRutaXML.getText());
+                Ventana_HTP.jtfObXML.setText(tfRutaXML.getText());
                 vh.setVisible(true);
                 break;
                 case "Ocupa":
                 Ventana_Ocupa vo = new Ventana_Ocupa(this, true);
-//                Ventana_Ocupa.jtfObXML.setText(tfRutaXML.getText());
+                Ventana_Ocupa.jtfObXML.setText(tfRutaXML.getText());
                 vo.setVisible(true);
                 break;
             default:

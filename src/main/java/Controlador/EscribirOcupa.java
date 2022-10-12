@@ -45,13 +45,13 @@ public class EscribirOcupa {
 //                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "SubTotal"), 560, 240, 0);//Sub total
 //                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Impuestos", "TotalImpuestosTrasladados"), 560, 228, 0);//IVA
 //                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_SSA.jtfObtenXML.getText(), "Comprobante", "Total"), 560, 215, 0);//Total
-                pageCB.showTextAligned(pages, noOcu, 90, 553, 0); //Buque
-                pageCB.showTextAligned(pages, noSoli, 95, 545, 0); // Segundo Buque
-                pageCB.showTextAligned(pages, noBuque, 240, 553, 0); // Solicitud de servicio
-                pageCB.showTextAligned(pages, peso, 240, 545, 0); // Solicitud dos
-                pageCB.showTextAligned(pages, contenedor, 450, 553, 0); // Referencia
-                pageCB.showTextAligned(pages, notas, 85, 265, 0); // Notas
-                pageCB.showTextAligned(pages, valorLetra, 160, 180, 0); //Valor del importe con letra
+                pageCB.showTextAligned(pages, noOcu, 90, 450, 0); //Buque
+                pageCB.showTextAligned(pages, noSoli, 90, 440, 0); // Segundo Buque
+                pageCB.showTextAligned(pages, noBuque, 240, 390, 0); // Solicitud de servicio
+                pageCB.showTextAligned(pages, peso, 240, 360, 0); // Solicitud dos
+                pageCB.showTextAligned(pages, contenedor, 450, 330, 0); // Referencia
+                pageCB.showTextAligned(pages, notas, 50, 400, 0); // Notas
+                pageCB.showTextAligned(pages, valorLetra, 70, 300, 0); //Valor del importe con letra
                 pageCB.endText();
             }
             pdfStamper.close();
