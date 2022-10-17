@@ -25,14 +25,14 @@ public class EscribirSSA {
     String rutaArial = "C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Documents\\NetBeansProjects\\PDFJava\\arial.ttf";
 
     public void escrituraSSA(String buque, String segundo_buque, String solicitud,
-            String segundo_solicitud, String referencia, String notas, String valorImporte) {
+            String segundo_solicitud, String referencia, String notas, String valorImporte, String dolar) {
         VisorPDF v = new VisorPDF();
         try {
 
             BaseFont arial = BaseFont.createFont(rutaArial, BaseFont.CP1252, true);
 
-            PdfReader pdfReader = new PdfReader("C:\\Users\\josue.ochoa\\Downloads\\FacturaSSA.pdf");
-            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream("C:\\Users\\josue.ochoa\\Downloads\\MachacaSSA.pdf"));
+            PdfReader pdfReader = new PdfReader("FacturaSSA.pdf");
+            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(("C:\\Users\\josue.ochoa\\Downloads\\"+ReadXML.getFolio(Ventana_SSA.jtfObtenXML.getText())+"_SSA.pdf")));
             File file = new File(pdfStamper.toString());
             BaseFont baseFont = BaseFont.createFont(BaseFont.TIMES_BOLD,
                     BaseFont.CP1252, BaseFont.EMBEDDED);
@@ -61,6 +61,7 @@ public class EscribirSSA {
                 pageCB.showTextAligned(pages, referencia, 450, 553, 0); // Referencia
                 pageCB.showTextAligned(pages, notas, 85, 265, 0); // Notas
                 pageCB.showTextAligned(pages, valorImporte, 160, 180, 0); //Valor del importe con letra
+                pageCB.showTextAligned(pages, dolar, 565, (float) 192.5, 0); //Valor del importe con letra
                 pageCB.endText();
             }
             pdfStamper.close();

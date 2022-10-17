@@ -19,16 +19,16 @@ import java.io.FileOutputStream;
  */
 public class EscribirMNZ {
 
-    String rutaArial = "C:\\Users\\josue.ochoa\\OneDrive - AUTOMOTIVE LOGISTICS S.C\\Documents\\NetBeansProjects\\PDFJava\\arial.ttf";
+    String rutaArial = "arial.ttf";
 
-    public void escrituraMNZ(String buque, String viaje, String fechaI, String fechaF, String referencia, String numero,String valor) {
+    public void escrituraMNZ(String buque, String viaje, String fechaI, String fechaF, String referencia, String numero, String valor, String dolar) {
         VisorPDF v = new VisorPDF();
         try {
 
             BaseFont arial = BaseFont.createFont(rutaArial, BaseFont.CP1252, true);
 
-            PdfReader pdfReader = new PdfReader("C:\\Users\\josue.ochoa\\Downloads\\FacturaMNZ.pdf");
-            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream("C:\\Users\\josue.ochoa\\Downloads\\MachacaMNZ.pdf"));
+            PdfReader pdfReader = new PdfReader("FacturaMNZ_1.pdf");
+            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(("C:\\Users\\josue.ochoa\\Downloads\\" + ReadXML.getFolio(Ventana_Manzanillo.jtfObtXML.getText()) + "_Manzanillo.pdf")));
             File file = new File(pdfStamper.toString());
             BaseFont baseFont = BaseFont.createFont(BaseFont.TIMES_BOLD,
                     BaseFont.CP1252, BaseFont.EMBEDDED);
@@ -40,8 +40,8 @@ public class EscribirMNZ {
 
                 pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "Serie") + "-", 490, 683, 0);//Serie
                 pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "Folio"), 530, 683, 0);//Serie
-                pageCB.showTextAligned(pages, valor, 330, 140, 0);
-                
+                pageCB.showTextAligned(pages, valor, 227, 130, 0);
+
                 pageCB.setFontAndSize(arial, 6);
                 pageCB.showTextAligned(pages, ReadXML.getFechaTimbrado(Ventana_Manzanillo.jtfObtXML.getText(), "UUID"), 500, 643, 0);
                 pageCB.showTextAligned(pages, ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "Fecha"), 100, 585, 0);//Serie
@@ -57,9 +57,10 @@ public class EscribirMNZ {
                 pageCB.showTextAligned(pages, numero, 425, 537, 0);
 
                 pageCB.setFontAndSize(arial, 8);
-                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "SubTotal"), 530, 205, 0);//
-                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Impuestos", "TotalImpuestosTrasladados"), 530, 180, 0);//IVA
-                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "Total"), 530, 165, 0);//Total
+                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "SubTotal"), 530, 196, 0);//
+                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Impuestos", "TotalImpuestosTrasladados"), 530, 170, 0);//IVA
+                pageCB.showTextAligned(pages, "$ " + ReadXML.getAo(Ventana_Manzanillo.jtfObtXML.getText(), "Comprobante", "Total"), 530, 157, 0);//Total
+                pageCB.showTextAligned(pages, dolar, 517, (float) 142.5, 0);
 
                 pageCB.endText();
             }

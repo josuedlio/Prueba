@@ -21,10 +21,12 @@ public class Ventana_HTP extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.padre = parent;
-        setTitle("Factura HTP");
+        setTitle("Factura Timsa");
         setBounds(50, 50, 1200, 300);
         jtfImportecLetra.setColumns(30);
-        jtfObXML.setColumns(20);
+        jtfDolarL.setColumns(30);
+        jtfMontoDolar.setColumns(10);
+        jtfObXML.setColumns(1);
         jtfObXML.setEnabled(false);
         Border buque = new TitledBorder("Buque");
         Border pedimento = new TitledBorder("Pedimento");
@@ -36,6 +38,8 @@ public class Ventana_HTP extends javax.swing.JDialog {
         Border pes = new TitledBorder("Peso");
         Border elaborado = new TitledBorder("Elaborado por");
         Border numFac = new TitledBorder("Importe con letra");
+        Border dollar = new TitledBorder("Monto Dollar");
+        Border dollarL = new TitledBorder("Importe Dollar");
         jtfBuque.setBorder(buque);
         jtfnoBuque.setBorder(buque);
         jtfnomContenedor.setBorder(nomContenedor);
@@ -47,6 +51,8 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfPeso.setBorder(pes);
         jtfElaborado.setBorder(elaborado);
         jtfImportecLetra.setBorder(numFac);
+        jtfMontoDolar.setBorder(dollar);
+        jtfDolarL.setBorder(dollarL);
         
         if( this.padre.cbFacturas.getSelectedItem() != null ){
             System.out.println("Valor seleccionado "+this.padre.cbFacturas.getSelectedItem());
@@ -66,7 +72,9 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jTextField2 = new javax.swing.JTextField();
         pPrincipal = new javax.swing.JPanel();
         pSur = new javax.swing.JPanel();
+        jtfDolarL = new javax.swing.JTextField();
         jtfImportecLetra = new javax.swing.JTextField();
+        jtfMontoDolar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jtfObXML = new javax.swing.JTextField();
@@ -89,6 +97,9 @@ public class Ventana_HTP extends javax.swing.JDialog {
 
         pPrincipal.setLayout(new java.awt.BorderLayout());
 
+        jtfDolarL.setText("Dolar en letra");
+        pSur.add(jtfDolarL);
+
         jtfImportecLetra.setText("Importe con letra");
         jtfImportecLetra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +107,9 @@ public class Ventana_HTP extends javax.swing.JDialog {
             }
         });
         pSur.add(jtfImportecLetra);
+
+        jtfMontoDolar.setText("Dolar");
+        pSur.add(jtfMontoDolar);
 
         jButton1.setText("Escribir y convertir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,15 +203,17 @@ public class Ventana_HTP extends javax.swing.JDialog {
                 || jtfPosicion.getText().isEmpty() || jtfTipo.getText().isEmpty()
                 || jtfMedida.getText().isEmpty() || jtfCategoria.getText().isEmpty()
                 || jtfPeso.getText().isEmpty() || jtfElaborado.getText().isEmpty()
-                || jtfImportecLetra.getText().isEmpty()) {
+                || jtfImportecLetra.getText().isEmpty()|| jtfMontoDolar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tienes campos vacios", "¡Campos vacios!", JOptionPane.WARNING_MESSAGE);
         } else {
             EscribirHTP es = new EscribirHTP();
             es.escrituraHTP(jtfBuque.getText(), jtfnoBuque.getText(),
                     jtfnomContenedor.getText(), jtfPedimento.getText(), jtfPosicion.getText(),
                     jtfCategoria.getText(), jtfMedida.getText(),
-                    jtfPeso.getText(), jtfTipo.getText(), jtfElaborado.getText(), jtfImportecLetra.getText());
+                    jtfPeso.getText(), jtfTipo.getText(), jtfElaborado.getText(), 
+                    jtfImportecLetra.getText(),jtfMontoDolar.getText(),jtfDolarL.getText());
                         JOptionPane.showMessageDialog(this, "Se genero un nuevo pdf ", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -222,6 +238,8 @@ public class Ventana_HTP extends javax.swing.JDialog {
         jtfPeso.setText("");
         jtfElaborado.setText("");
         jtfImportecLetra.setText("");
+        jtfMontoDolar.setText("");
+        jtfDolarL.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtfBuqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBuqueActionPerformed
@@ -242,9 +260,11 @@ public class Ventana_HTP extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jtfBuque;
     private javax.swing.JTextField jtfCategoria;
+    private javax.swing.JTextField jtfDolarL;
     private javax.swing.JTextField jtfElaborado;
     private javax.swing.JTextField jtfImportecLetra;
     private javax.swing.JTextField jtfMedida;
+    private javax.swing.JTextField jtfMontoDolar;
     public static javax.swing.JTextField jtfObXML;
     private javax.swing.JTextField jtfPedimento;
     private javax.swing.JTextField jtfPeso;

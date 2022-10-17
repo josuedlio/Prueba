@@ -20,9 +20,7 @@
             <groupId>com.github.pcorless.icepdf</groupId>
             <artifactId>icepdf-viewer</artifactId>
             <version>7.0.0</version>
-        </dependency>
-        
-        
+        </dependency>   
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>

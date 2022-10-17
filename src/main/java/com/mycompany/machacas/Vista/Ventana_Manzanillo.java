@@ -23,7 +23,7 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTitle("Factura Manzanillo");
-        setBounds(50, 50, 700, 300);
+        setBounds(50, 50, 783, 500);
         jtfObtXML.setEnabled(false);
         Border bordeB = new TitledBorder("Buque");
         Border bordeV = new TitledBorder("Viaje");
@@ -32,6 +32,7 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         Border bordeR = new TitledBorder("Referencia");
         Border bordeN = new TitledBorder("Número referencia");
         Border borderVa = new TitledBorder("Valor de la factura");
+        Border borderD = new TitledBorder("Dollar");
 
         jtfBuque.setBorder(bordeB);
         jtfViaje.setBorder(bordeV);
@@ -40,6 +41,8 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         jtfReferencia.setBorder(bordeR);
         jtfNumR.setBorder(bordeN);
         jtfValorFac.setBorder(borderVa);
+        jtfDolar.setBorder(borderD);
+        jtfDolar.setColumns(8);
     }
 
     /**
@@ -55,6 +58,7 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         pNorte = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pSur = new javax.swing.JPanel();
+        jtfDolar = new javax.swing.JTextField();
         btnEscribir = new javax.swing.JButton();
         jtfObtXML = new javax.swing.JTextField();
         pCentral = new javax.swing.JPanel();
@@ -76,6 +80,8 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
         pNorte.add(jLabel1);
 
         pPrincipal.add(pNorte, java.awt.BorderLayout.PAGE_START);
+
+        pSur.add(jtfDolar);
 
         btnEscribir.setText("Escribir y convertir");
         btnEscribir.addActionListener(new java.awt.event.ActionListener() {
@@ -123,15 +129,15 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
     private void btnEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscribirActionPerformed
         if (jtfBuque.getText().isEmpty() || jtfViaje.getText().isEmpty() || jtfFechaInicial.getText().isEmpty()
                 || jtfFechaFinal.getText().isEmpty() || jtfReferencia.getText().isEmpty() || jtfNumR.getText().isEmpty()||
-                jtfValorFac.getText().isEmpty()) {
+                jtfValorFac.getText().isEmpty()|| jtfDolar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tienes campos vacios", "¡Campos vacios!", JOptionPane.WARNING_MESSAGE);
         } else {
             EscribirMNZ es = new EscribirMNZ();
-            es.escrituraMNZ(jtfBuque.getText(), jtfViaje.getText(),
+            es.escrituraMNZ(jtfBuque.getText().toUpperCase(), jtfViaje.getText().toUpperCase(),
                     jtfFechaInicial.getText(), jtfFechaFinal.getText(),
-                    jtfReferencia.getText(), jtfNumR.getText(),jtfValorFac.getText());
+                    jtfReferencia.getText().toUpperCase(), jtfNumR.getText().toUpperCase(),jtfValorFac.getText().toUpperCase(),jtfDolar.getText());
             JOptionPane.showMessageDialog(this, "Se genero un nuevo pdf ", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
-
+            dispose();
         }
 
     }//GEN-LAST:event_btnEscribirActionPerformed
@@ -150,6 +156,7 @@ public class Ventana_Manzanillo extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jtfBuque;
+    private javax.swing.JTextField jtfDolar;
     private javax.swing.JTextField jtfFechaFinal;
     private javax.swing.JTextField jtfFechaInicial;
     private javax.swing.JTextField jtfNumR;

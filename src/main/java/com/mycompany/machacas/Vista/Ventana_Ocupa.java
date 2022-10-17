@@ -39,7 +39,10 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
         jtfNotas.setBorder(bordeN);
         Border bordeV = new TitledBorder("Total con letra");
         jtfImporteLetra.setBorder(bordeV);
-        jtfImporteLetra.setColumns(40);
+        jtfImporteLetra.setColumns(20);
+        Border bordeD = new TitledBorder("Monto en dolar");
+        jtfDolar.setBorder(bordeD);
+        jtfDolar.setColumns(20);
 
         setBounds(50, 50, 783, 500);
     }
@@ -56,6 +59,7 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
         pPrincipal = new javax.swing.JPanel();
         pSur = new javax.swing.JPanel();
         jtfImporteLetra = new javax.swing.JTextField();
+        jtfDolar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jtfObXML = new javax.swing.JTextField();
         pNorte = new javax.swing.JPanel();
@@ -73,6 +77,7 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
         pPrincipal.setLayout(new java.awt.BorderLayout());
 
         pSur.add(jtfImporteLetra);
+        pSur.add(jtfDolar);
 
         jButton1.setText("Escribir y generar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,8 +122,9 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
         } else {
             EscribirOcupa es = new EscribirOcupa();
             es.escrituraOcupa(jtfNoOcupa.getText(), jtfNoSolicitud.getText(), jtfNoBuque.getText(),
-                    jtfPeso.getText(), jtfContenedor.getText(), jtfNotas.getText(), jtfImporteLetra.getText());
-            JOptionPane.showMessageDialog(this, "Se genero pdf", "¡Nueva factura!", JOptionPane.WARNING_MESSAGE);
+                    jtfPeso.getText(), jtfContenedor.getText(), jtfNotas.getText(), jtfImporteLetra.getText().toUpperCase(),jtfDolar.getText());
+            JOptionPane.showMessageDialog(this, "Se genero pdf", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -127,6 +133,7 @@ public class Ventana_Ocupa extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jtfContenedor;
+    private javax.swing.JTextField jtfDolar;
     private javax.swing.JTextField jtfImporteLetra;
     private javax.swing.JTextField jtfNoBuque;
     private javax.swing.JTextField jtfNoOcupa;

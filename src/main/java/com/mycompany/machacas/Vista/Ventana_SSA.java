@@ -80,6 +80,7 @@ public class Ventana_SSA extends javax.swing.JDialog {
         jtfSolocitudDos = new javax.swing.JTextField();
         jtfNotas = new javax.swing.JTextField();
         jtfValorLetra = new javax.swing.JTextField();
+        jtfDolar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -166,6 +167,14 @@ public class Ventana_SSA extends javax.swing.JDialog {
         });
         pCentral.add(jtfValorLetra);
 
+        jtfDolar.setText("Dolar");
+        jtfDolar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtfDolarMouseClicked(evt);
+            }
+        });
+        pCentral.add(jtfDolar);
+
         pPrincipal.add(pCentral, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pPrincipal, java.awt.BorderLayout.CENTER);
@@ -183,8 +192,9 @@ public class Ventana_SSA extends javax.swing.JDialog {
             EscribirSSA es = new EscribirSSA();
             es.escrituraSSA(jtfBuque.getText(), jtfBuqueDos.getText(), jtfSolicitud.getText(),
                     jtfSolocitudDos.getText(), jtfReferencia.getText(), jtfNotas.getText(),
-                    jtfValorLetra.getText());
+                    jtfValorLetra.getText(),jtfDolar.getText());
             JOptionPane.showMessageDialog(this, "Se genero un nuevo pdf ", "¡Nueva factura!", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
 
             //ControladorVista.openSegundoPDF("file:///C:/Users/josue.ochoa/Downloads/MachacaSSA.pdf", v);
         }
@@ -225,6 +235,10 @@ public class Ventana_SSA extends javax.swing.JDialog {
         jtfReferencia.setText("");
     }//GEN-LAST:event_jtfReferenciaMouseClicked
 
+    private void jtfDolarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfDolarMouseClicked
+        jtfDolar.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDolarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -234,6 +248,7 @@ public class Ventana_SSA extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jtfBuque;
     private javax.swing.JTextField jtfBuqueDos;
+    private javax.swing.JTextField jtfDolar;
     private javax.swing.JTextField jtfNotas;
     public static javax.swing.JTextField jtfObtenXML;
     private javax.swing.JTextField jtfReferencia;

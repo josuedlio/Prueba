@@ -59,6 +59,8 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
+            <Component class="javax.swing.JTextField" name="jtfDolar">
+            </Component>
             <Component class="javax.swing.JButton" name="btnEscribir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Escribir y convertir"/>

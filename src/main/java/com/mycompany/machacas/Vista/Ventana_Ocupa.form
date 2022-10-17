@@ -43,6 +43,8 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="jtfImporteLetra">
             </Component>
+            <Component class="javax.swing.JTextField" name="jtfDolar">
+            </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Escribir y generar"/>
